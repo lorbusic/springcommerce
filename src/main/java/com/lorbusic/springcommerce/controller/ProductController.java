@@ -1,6 +1,7 @@
 package com.lorbusic.springcommerce.controller;
 
 
+import com.lorbusic.springcommerce.model.Variation;
 import com.lorbusic.springcommerce.repository.ProductRepository;
 
 import org.springframework.stereotype.Controller;
@@ -29,15 +30,14 @@ import java.util.List;
 public class ProductController {
 
     private  final  ProductServiceImpl productService;
-    private final ProductRepository productRepository;
+
     @Autowired
-    public ProductController(ProductServiceImpl productService, ProductRepository productRepository){
+    public ProductController(ProductServiceImpl productService){
         this.productService=productService;
-        this.productRepository = productRepository;
     }
 
 
-    @PostMapping(value = "/admin/product", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/product/add", consumes = "application/json", produces = "application/json")
     public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto productDto, Authentication authentication) {
        ProductDto newProduct = productService.createProduct(productDto);
        return  ResponseEntity.status(HttpStatus.CREATED).body(newProduct);
@@ -48,6 +48,8 @@ public class ProductController {
         List<Product> products = productService.getAllProducts();
         return  ResponseEntity.ok(products);
     }
+
+
 
     @GetMapping(value = "/vedi", produces = "application/json")
     public ModelAndView vedi() {

@@ -35,8 +35,8 @@ public class CartServiceImpl implements CartService {
             cartDto.setProductPrice(productPrice);
             cartDto.setProductId(productId);
         }
-        Cart cart = CartMapper.toEntity(cartDto);
+        Cart cart = cartMapper.toEntity(cartDto);
         Cart saveCart = cartRepository.save(cart);
-        return CartMapper.toDto(saveCart);
+        return cartMapper.toDto(saveCart);
     }
 }

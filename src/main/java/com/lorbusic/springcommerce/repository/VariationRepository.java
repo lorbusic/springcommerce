@@ -12,5 +12,5 @@ import java.util.List;
 public interface VariationRepository extends JpaRepository<Variation,Long> {
 
     @Query("SELECT v FROM Variation v ORDER BY v.id")
-    List<Variation> findAllVariationBySortedId();
+    List<Variation> getAllVariations();
 }

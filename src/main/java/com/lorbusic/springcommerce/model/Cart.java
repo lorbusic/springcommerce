@@ -4,6 +4,8 @@ package com.lorbusic.springcommerce.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -20,5 +22,8 @@ public class Cart {
 
     @Column(name="product_price")
     private Double productPrice;
+
+    @Column(name="data_insert")
+    private Date dataInsert;
 
 }

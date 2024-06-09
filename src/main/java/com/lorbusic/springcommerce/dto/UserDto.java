@@ -3,8 +3,7 @@ package com.lorbusic.springcommerce.dto;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @Builder
 public class UserDto {
 

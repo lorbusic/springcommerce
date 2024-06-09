@@ -32,9 +32,9 @@ public class UserServiceImpl implements UserService {
 
         userDto.setUserPsd(passwordEncoder.encode(psw));
 
-        User user = UserMapper.toEntity(userDto);
+        User user = userMapper.toEntity(userDto);
         User saveUser = userRepository.save(user);
-        return UserMapper.toDto(saveUser);
+        return userMapper.toDto(saveUser);
     }
 
     @Override

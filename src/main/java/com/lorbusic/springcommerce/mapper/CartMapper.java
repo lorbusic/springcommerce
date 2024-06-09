@@ -1,25 +1,21 @@
 package com.lorbusic.springcommerce.mapper;
 
 import com.lorbusic.springcommerce.dto.CartDto;
+import com.lorbusic.springcommerce.dto.ProductDto;
 import com.lorbusic.springcommerce.model.Cart;
-import org.springframework.context.annotation.Configuration;
+import com.lorbusic.springcommerce.model.Product;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-@Configuration
-public class CartMapper {
+import java.util.List;
 
-    public static CartDto toDto(Cart cart) {
-        return CartDto.builder()
-                .id(cart.getId())
-                .productId(cart.getProductId())
-                .productPrice(cart.getProductPrice())
-                .build();
-    }
+@Mapper(componentModel="spring")
+public interface CartMapper {
 
-    public static Cart toEntity(CartDto dto) {
-        return Cart.builder()
-                .id(dto.getId())
-                .productId(dto.getProductId())
-                .productPrice(dto.getProductPrice())
-                .build();
-    }
+    CartDto toDto(Cart product);
+
+    Cart toEntity(CartDto productDto);
+
+    List<CartDto> cartToCartDtos(List<Cart> cartList);
+
 }

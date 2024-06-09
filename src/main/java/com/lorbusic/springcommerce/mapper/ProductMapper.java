@@ -2,26 +2,26 @@ package com.lorbusic.springcommerce.mapper;
 
 import com.lorbusic.springcommerce.dto.ProductDto;
 import com.lorbusic.springcommerce.model.Product;
-import org.springframework.context.annotation.Configuration;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-@Configuration
-public class ProductMapper {
+import java.util.List;
 
-    public static ProductDto toDto(Product product) {
-        return ProductDto.builder()
-                .id(product.getId())
-                .productName(product.getProductName())
-                .productDescription(product.getProductDescription())
-                .productPrice(product.getProductPrice())
-                .build();
-    }
+//MAPSTRUCT
+@Mapper(componentModel="spring")
+public interface ProductMapper {
+    @Mapping(source = "id",target="id")
+    @Mapping(source = "productName", target = "productName")
+    @Mapping(source = "productDescription", target = "productDescription")
+    @Mapping(source = "productPrice", target = "productPrice")
+    ProductDto toDto(Product product);
 
-    public static Product toEntity(ProductDto dto) {
-        return Product.builder()
-                .id(dto.getId())
-                .productName(dto.getProductName())
-                .productDescription(dto.getProductDescription())
-                .productPrice(dto.getProductPrice())
-                .build();
-    }
+    @Mapping(source = "id",target="id")
+    @Mapping(source = "productName", target = "productName")
+    @Mapping(source = "productDescription", target = "productDescription")
+    @Mapping(source = "productPrice", target = "productPrice")
+    Product toEntity(ProductDto productDto);
+
+    List<ProductDto> productToProductDtos(List<Product> productList);
+
 }

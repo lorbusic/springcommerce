@@ -11,8 +11,13 @@ public class CartDto {
 
     private Long id;
 
-    private Long productId;
 
+    //Questi attributi indicheranno quale Product è stato
+    //inserito nel carrello di uno specifico User
+    private ProductDto productDto;
+    private UserDto userDto;
+
+    private Long productId;
     private Double productPrice;
 
 

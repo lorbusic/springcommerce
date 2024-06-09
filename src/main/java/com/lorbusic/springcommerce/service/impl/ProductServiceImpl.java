@@ -26,9 +26,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductDto createProduct(ProductDto productDto){
-        Product product = ProductMapper.toEntity(productDto);
+        Product product = productMapper.toEntity(productDto);
         Product saveProduct = productRepository.save(product);
-        return ProductMapper.toDto(saveProduct);
+        return productMapper.toDto(saveProduct);
     }
 
     @Override
@@ -48,6 +48,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public boolean updateProductById(Long id, ProductDto productDto) {
+
+        //productRepository.findByCriteria(productDto.getProductName());
+
         Product existingProduct = productRepository.findById(Math.toIntExact(id)).orElse(null);
         if (existingProduct != null) {
             existingProduct.setProductDescription(productDto.getProductDescription());

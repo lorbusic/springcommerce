@@ -12,6 +12,6 @@ import java.util.List;
 public interface CartRepository extends JpaRepository<Cart,Integer> {
 
     @Query("SELECT c FROM Cart c ORDER BY c.id DESC")
-    List<Cart> findAllSortedById();
+    List<Cart> getAllVariation();
 }
 

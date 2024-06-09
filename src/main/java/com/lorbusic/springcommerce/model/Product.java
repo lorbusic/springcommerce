@@ -4,6 +4,8 @@ package com.lorbusic.springcommerce.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -11,6 +13,7 @@ import lombok.*;
 @Builder
 @Table(name="product")
 public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
@@ -23,5 +26,8 @@ public class Product {
 
     @Column(name="product_price")
     private Double productPrice;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<Variation> variations;
 
 }
